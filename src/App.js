@@ -18,16 +18,21 @@ class App extends Component {
     });
   }
 
+  // shuffleCards = (cards) => {
+  //   let randomCard = Math.floor(Math.random() * cards.length);
+  //   return cards[randomCard];
+  // };
+
   render() {
     const { cards } = this.state;
     return (
       <div>
         <CardForm addCard={this.addCard} />
-        <Prompt cards={cards} />
-        <button class="btn" onClick={this.toggleAnswer.bind(this)}>
-          Show Answer
-        </button>
+        {this.state.hideAnswer && <Prompt cards={cards} />}
         {!this.state.hideAnswer && <Answer cards={cards} />}
+        <button className="btn" onClick={this.toggleAnswer.bind(this)}>
+          Flip Card
+        </button>
       </div>
     );
   }
