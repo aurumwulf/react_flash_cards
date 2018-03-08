@@ -1,7 +1,7 @@
 import React from 'react';
 
 class Card extends React.Component {
-  state = { hideAnswer: true };
+  state = { hideAnswer: false };
 
   toggleAnswer() {
     this.setState({
@@ -10,13 +10,14 @@ class Card extends React.Component {
   }
 
   render() {
-    if (this.hideAnswer) {
+    if (!this.hideAnswer) {
       return (
         <div>
           <ul>
             {this.props.cards.map((card) => (
               <div className="card">
                 {card.front}
+                <br />
                 <button className="btn" onClick={this.toggleAnswer.bind(this)}>
                   Flip
                 </button>
@@ -31,7 +32,7 @@ class Card extends React.Component {
           <ul>
             {this.props.cards.map((card) => (
               <div className="card">
-                {card.back}{' '}
+                {card.back} <br />
                 <button className="btn" onClick={this.toggleAnswer.bind(this)}>
                   Flip
                 </button>
