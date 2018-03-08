@@ -10,7 +10,7 @@ class Card extends React.Component {
   };
 
   render() {
-    if (!this.hideAnswer) {
+    if (!this.state.hideAnswer) {
       return (
         <div>
           <ul>
