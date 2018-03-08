@@ -1,7 +1,7 @@
 import React from 'react';
 
 class CardForm extends React.Component {
-  state = { id: '', front: '', back: '' };
+  state = { front: '', back: '' };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -9,25 +9,18 @@ class CardForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+
     this.props.addCard({
-      id: this.state.id,
+      id: Math.floor(Math.random() * 1000),
       front: this.state.front,
       back: this.state.back,
     });
-    this.setState({ id: '', front: '', back: '' });
+    this.setState({ front: '', back: '' });
   };
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input
-          value={this.state.id}
-          name="id"
-          onChange={this.handleChange}
-          required
-          placeholder="Add ID"
-        />
-        <br />
         <input
           value={this.state.front}
           name="front"

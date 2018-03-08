@@ -11,6 +11,14 @@ class App extends Component {
     this.setState({ cards: [card, ...cards] });
   };
 
+  updateCard = (id) => {};
+
+  deleteCard = (id) => {
+    const { cards } = this.state;
+    this.setState({
+      cards: cards.filter((c) => c.id !== id),
+    });
+  };
   // shuffleCards = (cards) => {
   //   let randomCard = Math.floor(Math.random() * cards.length);
   //   return cards[randomCard];
@@ -20,7 +28,11 @@ class App extends Component {
     return (
       <div>
         <CardForm addCard={this.addCard} />
-        <Card cards={this.state.cards} />
+        <Card
+          cards={this.state.cards}
+          updateCard={this.updateCard}
+          deleteCard={this.deleteCard}
+        />
       </div>
     );
   }

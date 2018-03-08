@@ -3,11 +3,11 @@ import React from 'react';
 class Card extends React.Component {
   state = { hideAnswer: false };
 
-  toggleAnswer() {
+  toggleAnswer = () => {
     this.setState({
       hideAnswer: !this.state.hideAnswer,
     });
-  }
+  };
 
   render() {
     if (!this.hideAnswer) {
@@ -18,8 +18,15 @@ class Card extends React.Component {
               <div className="card">
                 {card.front}
                 <br />
-                <button className="btn" onClick={this.toggleAnswer.bind(this)}>
+                <button className="btn" onClick={this.toggleAnswer}>
                   Flip
+                </button>
+                <br />
+                <button
+                  className="btn"
+                  onClick={() => this.props.deleteCard(card.id)}
+                >
+                  Delete
                 </button>
               </div>
             ))}
@@ -33,7 +40,7 @@ class Card extends React.Component {
             {this.props.cards.map((card) => (
               <div className="card">
                 {card.back} <br />
-                <button className="btn" onClick={this.toggleAnswer.bind(this)}>
+                <button className="btn" onClick={this.toggleAnswer}>
                   Flip
                 </button>
               </div>
