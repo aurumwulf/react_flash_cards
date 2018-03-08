@@ -4,18 +4,21 @@ import List from './List.js';
 import CardForm from './CardForm.js';
 
 class App extends Component {
-  state = {
-    cards: [
-      { front: 'Rails', back: 'Framework' },
-      { front: 'React', back: 'Library' },
-      { front: 'Jquery', back: 'Library' },
-    ],
+  state = { cards: [] };
+
+  addCard = (card) => {
+    const { cards } = this.state;
+    this.setState({ cards: [card, ...cards] });
   };
 
   render() {
     const { cards } = this.state;
-
-    return <List cards={cards} />;
+    return (
+      <div>
+        <CardForm addCard={this.addCard} />
+        <List cards={cards} />
+      </div>
+    );
   }
 }
 
