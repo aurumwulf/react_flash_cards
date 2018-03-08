@@ -17,11 +17,10 @@ class App extends Component {
   // };
 
   render() {
-    const { cards } = this.state;
     return (
       <div>
         <CardForm addCard={this.addCard} />
-        <Card cards={cards} />
+        <Card cards={this.state.cards} />
       </div>
     );
   }

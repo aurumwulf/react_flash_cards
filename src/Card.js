@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Card extends Component {
+class Card extends React.Component {
   state = { hideAnswer: true };
 
   toggleAnswer() {
@@ -14,7 +14,7 @@ class Card extends Component {
       return (
         <div>
           <ul>
-            {cards.map((card) => (
+            {this.props.cards.map((card) => (
               <div className="card">
                 {card.front}
                 <button className="btn" onClick={this.toggleAnswer.bind(this)}>
@@ -29,7 +29,7 @@ class Card extends Component {
       return (
         <div>
           <ul>
-            {cards.map((card) => (
+            {this.props.cards.map((card) => (
               <div className="card">
                 {card.back}{' '}
                 <button className="btn" onClick={this.toggleAnswer.bind(this)}>
